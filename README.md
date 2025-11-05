@@ -8,7 +8,9 @@
 
 ## 📋 Overview
 
-Beauty Store is a modern e-commerce web application specialized in beauty and skincare products. The platform offers an intuitive shopping experience with features like product categorization, wishlist management, shopping cart, and detailed product information including ingredients and customer reviews.
+Beauty Store is a modern e-commerce web application specialized in beauty and skincare products, developed as my final project during the Ironhack Web Development Bootcamp in 2021.
+
+The platform offers an intuitive shopping experience with features like product categorization, wishlist management, shopping cart, and detailed product information including ingredients and customer reviews. This full-stack application showcases the implementation of a complete e-commerce solution using the MERN stack (MongoDB, Express, React, Node.js).
 
 **Live Demo:** [beautystoreon.herokuapp.com](https://beautystoreon.herokuapp.com/)
 
