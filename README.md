@@ -14,6 +14,10 @@ The platform offers an intuitive shopping experience with features like product 
 
 **Live Demo:** [beautystoreon.herokuapp.com](https://beautystoreon.herokuapp.com/)
 
+## 📸 Screenshots
+
+![Beauty Store Homepage](./screenshots/homepage.png)
+
 ## ✨ Features
 
 - **Product Catalog**: Browse through a curated collection of beauty and skincare products
