@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Spinner } from 'react-bootstrap';
@@ -11,22 +11,19 @@ const Type = (props) => {
     const [loading, setLoading] = useState(false);
     const [filtered, setFiltered] = useState([]);
     const { type } = props.match.params;
-    console.log('type', type);
 
     useEffect(() => {
-       //console.log('inside use effect')
        getAll()
     }, [])
 
     const getAll = async() => {
         try{
             const result = await api.get('/product/all');
-            console.log('inside result');
             setProducts(result.data);
-            setLoading(true);   
+            setLoading(true);
         } catch(error) {
             console.error(error);
-        };  
+        };
     };
 
     const heart = '♥';
@@ -38,12 +35,12 @@ const Type = (props) => {
 
     useEffect(() => {
         filteredProducts();
-    }, [products, type]);
+    }, [filteredProducts, products, type]);
 
-    const filteredProducts = () => {
+    const filteredProducts = useCallback(() => {
         const filteredProduct = products.filter(el => el.category === type.slice(0, 4) && el.type === type.slice(5));
         setFiltered(filteredProduct);
-    }
+    }, [products, type]);
 
     return (
         <div className='showall'>

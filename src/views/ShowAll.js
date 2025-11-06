@@ -17,12 +17,11 @@ const ShowAll = () => {
     const getAll = async() => {
         try{
             const result = await api.get('/product/all');
-            console.log('inside result');
             setProducts(result.data);
-            setLoading(true);   
+            setLoading(true);
         } catch(error) {
             console.error(error);
-        };  
+        };
     };
 
     const heart = '♥';

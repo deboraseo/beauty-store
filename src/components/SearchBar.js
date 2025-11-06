@@ -24,7 +24,6 @@ const SearchBar = () => {
     const getProducts = async() => {
         try {
             const result = await api.get('/product/all');
-            console.log('result', result);
             setProducts(result.data);
         } catch(error) {
             console.error(error.response);
@@ -34,7 +33,7 @@ const SearchBar = () => {
     useEffect(() => {
         const filtered = products.filter(el => el.name.toLowerCase().includes(inputValue.toLowerCase()));
         setFilteredList(filtered);
-    }, [inputValue]);
+    }, [inputValue, products]);
 
     let menuRef = useRef()
 

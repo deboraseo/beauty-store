@@ -31,7 +31,6 @@ function App() {
     const getCart = async() => {
        try {
            const result = await api.get('/cart');
-           console.log('cart in App',result.data.products);
            setCart(result.data.products);
        } catch(error) {
             console.error(error);
@@ -45,11 +44,10 @@ function App() {
    const getMyList = async() => {
      try {
       const result = await api.get('/my-list');
-      console.log('my list result', result.data.products);
       setList(result.data.products);
      }catch(error){
        console.error(error);
-     }    
+     }
    };
 
     const addToMyList = async(el) => {

@@ -9,8 +9,6 @@ import './ShowAll.css';
 const BestSellers = (props) => {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(false);
-    const { name } = props.match.params;
-    console.log('name', name);
 
     useEffect(() => {
        getAll()
@@ -19,13 +17,11 @@ const BestSellers = (props) => {
     const getAll = async() => {
         try{
             const result = await api.get('/product/all');
-            console.log('inside result');
             setProducts(result.data);
             setLoading(true);
-            // setFiltered(result.data);    
         } catch(error) {
             console.error(error);
-        };  
+        };
     };
 
     const heart = '♥';

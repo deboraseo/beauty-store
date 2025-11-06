@@ -7,7 +7,6 @@ import './CartPage.css';
 
 const CartPage = (props) => {
 
-    console.log('cart data', props.cartData);
     const [cart, setCart] = useState([]);
 
     useEffect(() => {
@@ -25,7 +24,7 @@ const CartPage = (props) => {
 
     const handleQty = async(el, e) => {
         const qty = parseInt(e.target.value);
-        //console.log('qty parseInt', typeof qty);
+   
         try {
             await api.put(`/cart/${el}`, {qty});
             props.getCart();
