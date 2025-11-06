@@ -138,5 +138,22 @@ The build is minified and the filenames include the hashes.
 
 - **Backend API**: [beauty-store-app](https://github.com/aquarius12345/beauty-store-app)
 
+## 📄 License & Copyright
+
+**Copyright © 2021-2025 Debora Seo. All Rights Reserved.**
+
+This project is part of a personal portfolio and was created as a final project during the Ironhack Web Development Bootcamp in 2021.
+
+⚠️ **Important Notice:**
+- This code is available for **viewing and educational purposes only**
+- **Copying, modifying, or using this code** for commercial or personal projects **without explicit permission is prohibited**
+- This is proprietary software protected by copyright law
+- For usage permissions or inquiries, please contact the repository owner
+
+## 👥 Contact
+
+For questions, feedback, or permission requests, please open an issue in the GitHub repository.
+
+---
 
 Built with ❤️ using React
