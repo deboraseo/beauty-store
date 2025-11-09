@@ -98,10 +98,10 @@ const Details = (props) => {
                 </div>
                
                 <div className='img-toggle'>
-                {!toggleImg ?    
+                {!toggleImg ?
                   <img src={product.image_one} className='img-size' alt={product.name}/>
                   :
-                  <img src={product.image_two} className='img-size' alt="second-image"/>
+                  <img src={product.image_two} className='img-size' alt="alternate view"/>
                 }
                 </div>
                

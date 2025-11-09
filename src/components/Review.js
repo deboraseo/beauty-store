@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import api from '../configs/api';
 import './Review.css';
@@ -15,12 +15,7 @@ const Review = (props) => {
     // const [error, setError] = useState('');
     const token = localStorage.getItem('token');
 
-
-    useEffect(() => {
-        getReviews();
-    },[]);
-
-    const getReviews = async() => {
+    const getReviews = useCallback(async() => {
         try {
             const result = await api.get(`/review/${props.id}`);
             console.log('review result', result.data);
@@ -29,11 +24,11 @@ const Review = (props) => {
             console.error(error);
             // setError(error.response.data.message);
         };
-    };
+    }, [props.id]);
 
     useEffect(() => {
         getReviews();
-    }, [props.id]);
+    }, [getReviews]);
 
     const toggle = () => {
         setMod(!mod);
@@ -41,9 +36,9 @@ const Review = (props) => {
 
     const handleSubmit = async(e) => {
         e.preventDefault();
-        
+
         try {
-            const result = await api.post(`/review/${props.id}`, { review });
+            await api.post(`/review/${props.id}`, { review });
             console.log('review submit', review);
             setReview('');
             getReviews();

@@ -6,7 +6,7 @@ import './MyList.css';
 
 const MyList = (props) => {
     const [list, setList] = useState([]);
-    const [user, setUser] = useState(localStorage.getItem('userName'));
+    const user = localStorage.getItem('userName');
     //console.log('list', list)
 
     useEffect(() => {
