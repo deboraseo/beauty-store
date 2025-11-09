@@ -1,29 +1,35 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import api from '../configs/api';
 import './Details.css';
 import Review from '../components/Review';
 
 
 const Details = (props) => {
-    //console.log('details props', props)
     const [product, setProduct] = useState({});
     const [qty, setQty] = useState(1);
     const [toggleImg, setToggleImg] = useState(false);
     const [isFavorite, setIsFavorite] = useState(false);
 
-    const oneProduct = async() => {
-        const result = await api.get(`/product/${props.match.params.id}`);
-        //console.log('result oneProduct', result.data) 
-        setProduct(result.data);
-    };
+    const checkIfIsFavorite = useCallback(() => {
+        const filtered = props.list.filter(el => el._id === props.match.params.id);
+
+        if(filtered.length > 0) {
+            return true;
+        }
+        return false;
+    }, [props.list, props.match.params.id]);
 
     useEffect(() => {
-       oneProduct();
-    }, [,props.match.params.id, qty, props.list]);
+        const oneProduct = async() => {
+            const result = await api.get(`/product/${props.match.params.id}`);
+            setProduct(result.data);
+        };
+        oneProduct();
+    }, [props.match.params.id]);
 
     useEffect(() => {
         setIsFavorite(checkIfIsFavorite());
-    }, [product]);
+    }, [checkIfIsFavorite, product]);
 
 
     const heart = '♥';
@@ -35,29 +41,52 @@ const Details = (props) => {
 
     const handleInput = (e) => {
         e.preventDefault();
-        // setQty(e.target.value);
+        
         const newqty = parseInt(e.target.value);
         setQty(newqty);
     };
 
     const addToCart = async(el) => {
         try {
-            const result = await api.post(`/cart/${el}`,{qty});
-            //console.log('add to cart', result)
+            await api.post(`/cart/${el}`, {qty});
             props.getCart();
         }catch(error){
             console.error(error);
         }
     };
 
-    const checkIfIsFavorite = () => {
-        const filtered = props.list.filter(el => el._id === props.match.params.id);
-     
-        if(filtered.length > 0) {
-            return true;
+    const highlights = [
+        {
+            key: 'Vegan',
+            label: 'Vegan',
+            icon: 'https://res.cloudinary.com/dgzbojudn/image/upload/v1634241913/beautyStore/3901573_nirqxb.png'
+        },
+        {
+            key: 'Parabens',
+            label: 'Paraben Free',
+            icon: 'https://res.cloudinary.com/dgzbojudn/image/upload/v1634241913/beautyStore/3637654_wizijw.png'
+        },
+        {
+            key: 'Redness',
+            label: 'Redness',
+            icon: 'https://res.cloudinary.com/dgzbojudn/image/upload/v1634241914/beautyStore/4771256_cnzxhv.png'
+        },
+        {
+            key: 'Cruelty',
+            label: 'Cruelty Free',
+            icon: 'https://res.cloudinary.com/dgzbojudn/image/upload/v1634241914/beautyStore/4807799_ehdv9u.png'
+        },
+        {
+            key: 'Sili',
+            label: 'Silicone Free',
+            icon: 'https://res.cloudinary.com/dgzbojudn/image/upload/v1634241913/beautyStore/3901485_rpri91.png'
+        },
+        {
+            key: 'Sali',
+            label: 'Salicylic Acid',
+            icon: 'https://res.cloudinary.com/dgzbojudn/image/upload/v1634241914/beautyStore/salycilic_ivodnl.png'
         }
-        return false;
-    }; 
+    ];
 
     return (
         <div className='details'>
@@ -94,66 +123,25 @@ const Details = (props) => {
                 </div>   
            </div>
 
-            <div className='high'>
-                <hr/>
-                <h4>Highlights</h4>
+            {product.ingredients && highlights.some(highlight => product.ingredients.includes(highlight.key)) && (
+                <div className='high'>
+                    <hr/>
+                    <h4>Highlights</h4>
                     <div>
                         <ul className='highlights'>
-                           { !product.ingredients ? '' : 
-                           <>
-                            <li>
-                            { product.ingredients.includes('Vegan') ? (
-                                <> 
-                                    <img src='https://res.cloudinary.com/dgzbojudn/image/upload/v1634241913/beautyStore/3901573_nirqxb.png' alt='vegan'/>
-                                    <span> Vegan</span>
-                                </>) : ''}   
-                            </li>   
-                            
-                            <li>
-                            { product.ingredients.includes('Parabens') ? (
-                                <>
-                                  <img src='https://res.cloudinary.com/dgzbojudn/image/upload/v1634241913/beautyStore/3637654_wizijw.png' alt='paraben free'/>
-                                  <span> Paraben Free</span> 
-                                </>) : '' }
-                            </li> 
-                           
-                            <li>
-                            { product.ingredients.includes('Redness') ? (
-                                <>
-                                  <img src='https://res.cloudinary.com/dgzbojudn/image/upload/v1634241914/beautyStore/4771256_cnzxhv.png' alt='redness'/>
-                                  <span> Redness</span>
-                                </>) : '' }
-                            </li>
-
-                            <li>
-                            { product.ingredients.includes('Cruelty') ? (
-                                <>
-                                    <img src='https://res.cloudinary.com/dgzbojudn/image/upload/v1634241914/beautyStore/4807799_ehdv9u.png' alt='cruelty free' />
-                                    <span> Cruelty Free</span>
-                                </>) : '' }
-                            </li>
-
-
-                            <li>
-                            { product.ingredients.includes('Sili') ? (
-                                <>
-                                <img src='https://res.cloudinary.com/dgzbojudn/image/upload/v1634241913/beautyStore/3901485_rpri91.png' alt='silicone free'/>
-                                <span> Silicone Free</span>
-                                </>) : '' }
-                            </li>
-
-                            <li>
-                            { product.ingredients.includes('Sali') ? (
-                                <>
-                                <img src='https://res.cloudinary.com/dgzbojudn/image/upload/v1634241914/beautyStore/salycilic_ivodnl.png' alt='salicylic acid'/>
-                                <span> Salicylic Acid</span>
-                                </>) : '' }
-                            </li>
-                            </>
-                        }
-                        </ul>  
+                           {highlights
+                               .filter(highlight => product.ingredients.includes(highlight.key))
+                               .map(highlight => (
+                                   <li key={highlight.key}>
+                                       <img src={highlight.icon} alt={highlight.label.toLowerCase()} />
+                                       <span> {highlight.label}</span>
+                                   </li>
+                               ))
+                           }
+                        </ul>
                     </div>
-            </div>
+                </div>
+            )}
 
             <div>
                 <hr/>
