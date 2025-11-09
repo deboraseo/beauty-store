@@ -17,6 +17,8 @@ The platform offers an intuitive shopping experience with features like product 
 ## 📸 Screenshots
 
 ![Beauty Store Homepage](./screenshots/homepage.png)
+![Beauty Store PDP](./screenshots/pdp.png)
+
 
 ## ✨ Features
 
@@ -45,42 +47,6 @@ The platform offers an intuitive shopping experience with features like product 
 - **State Management**: React Hooks (useState, useEffect, useMemo)
 - **Environment Variables**: dotenv
 
-## 📁 Project Structure
-
-```
-beauty-store/
-├── public/
-├── src/
-│   ├── components/
-│   │   ├── BodyFace.js
-│   │   ├── Caroussel.js
-│   │   ├── Footer.js
-│   │   ├── Header.js
-│   │   ├── Navbar.js
-│   │   ├── Review.js
-│   │   ├── SearchBar.js
-│   │   ├── Slider.js
-│   │   └── Today.js
-│   ├── configs/
-│   │   ├── api.js
-│   │   └── PrivateRoute.js
-│   ├── views/
-│   │   ├── About.js
-│   │   ├── BestSellers.js
-│   │   ├── BodyCare.js
-│   │   ├── CartPage.js
-│   │   ├── Details.js
-│   │   ├── FaceCare.js
-│   │   ├── Home.js
-│   │   ├── Logout.js
-│   │   ├── MyList.js
-│   │   ├── ShowAll.js
-│   │   ├── Signup.js
-│   │   └── Type.js
-│   ├── App.js
-│   └── index.js
-└── package.json
-```
 
 ## 🚀 Getting Started
 
@@ -143,9 +109,9 @@ The build is minified and the filenames include the hashes.
 This project is part of a personal portfolio and was created as a final project during the Ironhack Web Development Bootcamp in 2021.
 
 ⚠️ **Important Notice:**
-- This code is available for **viewing and educational purposes only**
-- **Copying, modifying, or using this code** for commercial or personal projects **without explicit permission is prohibited**
-- For usage permissions or inquiries, please contact the repository owner
+- This code is available for **viewing and educational purposes only.**
+- **Copying, modifying, or using this code** for commercial or personal projects **without explicit permission is prohibited.**
+- For usage permissions or inquiries, please contact the repository owner.
 
 ## 👥 Contact
 

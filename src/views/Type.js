@@ -33,14 +33,14 @@ const Type = (props) => {
         return heart.repeat(number).padEnd(5, emptyheart);
     }
 
-    useEffect(() => {
-        filteredProducts();
-    }, [filteredProducts, products, type]);
-
     const filteredProducts = useCallback(() => {
         const filteredProduct = products.filter(el => el.category === type.slice(0, 4) && el.type === type.slice(5));
         setFiltered(filteredProduct);
     }, [products, type]);
+
+    useEffect(() => {
+        filteredProducts();
+    }, [filteredProducts, products, type]);
 
     return (
         <div className='showall'>
