@@ -17,7 +17,7 @@ The platform offers an intuitive shopping experience with features like product 
 ## 📸 Screenshots
 
 **Home**
-![Beauty Store Homepage](./screenshots/homepage.png)
+![Beauty Store Homepage](./screenshots/home.png)
 
 **Product Details Page**
 ![Beauty Store PDP](./screenshots/pdp.png)
