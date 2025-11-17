@@ -1,118 +1,147 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './BodyFace.css';
 import api from '../configs/api';
 
+// Hook customizado para query params
+const useQuery = () => {
+    return new URLSearchParams(useLocation().search);
+};
 
 const BodyFace = (props) => {
-    // name={query.get('name')} brand={query.get('brand')}
-    function useQuery() {
-        return new URLSearchParams(useLocation().search);
-    }
-
-    let query = useQuery();
-    //console.log(query)
-
-    // const location = useLocation();
-    // //console.log('useLocation', location)
-
+    const query = useQuery();
     const skin = query.get('name');
-    console.log('skin',skin)
-
     const byBrand = query.get('brand');
-    console.log('brand', byBrand);
-
-    const radio = props.radio;
-    console.log('radio', radio)
+    const { radio, category } = props;
 
     const [products, setProducts] = useState([]);
     const [skinType, setSkinType] = useState([]);
-    //const [radioValue, setRadioValue] = useState(radio);
-    console.log('skintype', skinType)
-    //console.log('products', products)
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    const getProducts = useCallback(async () => {
+        try {
+            setLoading(true);
+            setError(null);
+            const result = await api.get('/product/all');
+            const filtered = result.data.filter(el => el.category === category);
+            setProducts(filtered);
+            setSkinType(filtered);
+        } catch (error) {
+            console.error('Error fetching products:', error);
+            setError('Falha ao carregar produtos. Tente novamente.');
+        } finally {
+            setLoading(false);
+        }
+    }, [category]);
 
     useEffect(() => {
-        getProducts();   
-    },[]);
-
-    const getProducts = async() => {
-            try {
-                const result = await api.get('/product/all');
-               
-                const filtered = result.data.filter(el => el.category === props.category);
-                setProducts(filtered);
-                setSkinType(filtered);      
-            } catch(error) {
-                console.error(error.response);
-            };
-    };
+        getProducts();
+    }, [getProducts]);
 
     useEffect(() => {
-        if(skin){
-            const filtered = products.filter(el => {
-                if(radio){
-                    return el.skin_type === skin && el.rating == radio
-                }
-                return el.skin_type === skin       
-            });
-            setSkinType(filtered);
-            console.log('skin use effect')
-        }
-        
-        if(byBrand){
-            const filtered = products.filter(el =>{
-                if(radio){
-                    return el.brand === byBrand && el.rating == radio
-                }
-                return el.brand === byBrand
-            }) 
-            setSkinType(filtered);
-            console.log('by brand use effect')
-        }
+        const applyFilters = () => {
+            let filtered = [...products];
 
-        if(!skin && !byBrand){
-            if(radio){
-                const filtered = products.filter(el => el.rating == radio)
-                setSkinType(filtered);
-                return
+            // Filtro por tipo de pele
+            if (skin) {
+                filtered = filtered.filter(el => el.skin_type === skin);
             }
-            setSkinType(products);
-        }           
-    }, [skin, byBrand, radio]);
+
+            // Filtro por marca
+            if (byBrand) {
+                filtered = filtered.filter(el => el.brand === byBrand);
+            }
+
+            // Filtro por rating
+            if (radio) {
+                filtered = filtered.filter(el => el.rating === Number(radio));
+            }
+
+            setSkinType(filtered);
+        };
+
+        applyFilters();
+    }, [skin, byBrand, radio, products]);
 
 
     const heart = '♥';
-    const emptyheart = '♡'
+    const emptyheart = '♡';
 
     const rating = (number) => {
         return heart.repeat(number).padEnd(5, emptyheart);
+    };
+
+    const formatPrice = (price) => {
+        return (price / 100).toLocaleString('pt-BR', {
+            style: 'currency',
+            currency: 'USD',
+            minimumFractionDigits: 2
+        });
+    };
+
+    if (loading) {
+        return (
+            <div className='b-page'>
+                <section className='products-part'>
+                    <div className='loading-message'>
+                        <p>Carregando produtos...</p>
+                    </div>
+                </section>
+            </div>
+        );
     }
-    
-    return(
+
+    if (error) {
+        return (
+            <div className='b-page'>
+                <section className='products-part'>
+                    <div className='error-message'>
+                        <p>{error}</p>
+                        <button onClick={getProducts}>Tentar novamente</button>
+                    </div>
+                </section>
+            </div>
+        );
+    }
+
+    return (
         <div className='b-page'>
-            {/* -------------Rendering Products section------------ */}
             <section className='products-part'>
                 <div className='result'>
-                    <p>{'('+ skinType.length +')'} Results</p> 
+                    <p>({skinType.length}) {skinType.length === 1 ? 'Resultado' : 'Resultados'}</p>
                 </div>
 
-                <div>
-                    <ul className='the-ul'>
-                    {(skinType.map(el => <li key={el._id} className='prd-card'> 
-                    <Link to={`/product-detail/${el._id}`}>
-                    <img src={el.image_one} alt='body product'/>
-                    <div>
-                        <h6>{el.brand}</h6>
-                        <p className='the-p'>{el.name}</p>
-                        <p className='rating-hearts'>{rating(el.rating)}</p>
-                        <p>{'$'+ (el.price / 100) + '.00'}</p>
+                {skinType.length === 0 ? (
+                    <div className='no-results'>
+                        <p>Nenhum produto encontrado com os filtros selecionados.</p>
                     </div>
-                    </Link>
-                </li>))
-                    }
-                    </ul>
-                </div>
-            </section>      
+                ) : (
+                    <div>
+                        <ul className='products-list'>
+                            {skinType.map(el => (
+                                <li key={el._id} className='prd-card'>
+                                    <Link to={`/product-detail/${el._id}`}>
+                                        <img
+                                            src={el.image_one}
+                                            alt={`${el.brand} - ${el.name}`}
+                                            loading="lazy"
+                                        />
+                                        <div>
+                                            <h6>{el.brand}</h6>
+                                            <p className='product-name'>{el.name}</p>
+                                            <p className='rating-hearts' aria-label={`Rating: ${el.rating} de 5 estrelas`}>
+                                                {rating(el.rating)}
+                                            </p>
+                                            <p className='product-price'>{formatPrice(el.price)}</p>
+                                        </div>
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                )}
+            </section>
         </div>
     );
 };
