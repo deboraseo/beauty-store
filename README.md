@@ -12,7 +12,7 @@ Beauty Store is a modern e-commerce web application specialized in beauty and sk
 
 The platform offers an intuitive shopping experience with features like product categorization, wishlist management, shopping cart, and detailed product information including ingredients and customer reviews. This full-stack application showcases the implementation of a complete e-commerce solution using the MERN stack (MongoDB, Express, React, Node.js).
 
-**Live Demo:** [beautystoreon.herokuapp.com](https://beautystoreon.herokuapp.com/)
+**Live Demo:** [beautystoreon.herokuapp.com](https://beauty-store-red.vercel.app/)
 
 ## 📸 Screenshots
 
