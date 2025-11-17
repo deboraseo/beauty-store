@@ -2,13 +2,13 @@ import './App.css';
 import { useState, useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Header from './components/Header';
-import Today from './components/Today';
+import PromoBanner from './components/PromoBanner';
+import ScrollToTop from './components/ScrollToTop';
 import Home from './views/Home';
 import Signup from './views/Signup';
 import Logout from './views/Logout';
-import BodyCare from './views/BodyCare';
+import CategoryPage from './views/CategoryPage';
 import Details from './views/Details';
-import FaceCare from './views/FaceCare';
 import CartPage from './views/CartPage';
 import MyList from './views/MyList';
 import ShowAll from './views/ShowAll';
@@ -58,15 +58,16 @@ function App() {
 
   return (
     <div className="App">
-      <Today />
+      <PromoBanner />
       <Header cartData={cart} getCart={getCart}/>
+      <ScrollToTop />
       <Switch>
         <Route exact path='/' render={(props)=> <Home {...props} />} />
         <Route exact path='/signup' component= {Signup} />
         <Route exact path='/logout' component={Logout} />
-        <Route exact path='/bodycare' component={BodyCare} />
+        <Route exact path='/bodycare' component={CategoryPage} />
         <Route exact path='/product-detail/:id' render={(props)=> <Details {...props} getCart={getCart} add={addToMyList} getList={getMyList} list={list}/>} />
-        <Route exact path='/face-care' component={FaceCare} />
+        <Route exact path='/face-care' component={CategoryPage} />
         <Route exact path='/cart' render={(props)=> <CartPage {...props} cartData={cart} getCart={getCart} /> }/>
         <Route exact path='/my-list' render={(props)=> <MyList {...props} list={list} getList={getMyList} getCart={getCart} /> }/>
         <Route exact path='/store/all' component={ShowAll} />

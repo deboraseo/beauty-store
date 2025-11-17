@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
+import { Spinner } from 'react-bootstrap';
 import api from '../configs/api';
 import './Details.css';
 import Review from '../components/Review';
@@ -9,6 +10,7 @@ const Details = (props) => {
     const [qty, setQty] = useState(1);
     const [toggleImg, setToggleImg] = useState(false);
     const [isFavorite, setIsFavorite] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     const checkIfIsFavorite = useCallback(() => {
         const filtered = props.list.filter(el => el._id === props.match.params.id);
@@ -21,8 +23,15 @@ const Details = (props) => {
 
     useEffect(() => {
         const oneProduct = async() => {
-            const result = await api.get(`/product/${props.match.params.id}`);
-            setProduct(result.data);
+            try {
+                setLoading(false);
+                const result = await api.get(`/product/${props.match.params.id}`);
+                setProduct(result.data);
+                setLoading(true);
+            } catch (error) {
+                console.error(error);
+                setLoading(true);
+            }
         };
         oneProduct();
     }, [props.match.params.id]);
@@ -90,7 +99,8 @@ const Details = (props) => {
 
     return (
         <div className='details'>
-        {product ? <>
+        {loading ? (
+            product._id ? <>
            <div className='det-container'>
                 <div className='btnn-container'>
                    <img src={product.image_one} alt={product.name} onClick={() => setToggleImg(false)}/>
@@ -147,8 +157,13 @@ const Details = (props) => {
                 <hr/>
                 <Review  id={props.match.params.id} />
             </div>
-        
-         </>  : '' }           
+
+         </>  : ''
+        ) : (
+            <div className='spinner'>
+                <Spinner animation="border" role="status" className='loader'></Spinner>
+            </div>
+        )}
         </div>
     );
 };

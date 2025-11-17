@@ -1,14 +1,13 @@
-.today-bg {
+.promo-banner {
     width: 100vw;
     height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
-    /* background-color: rgb(250, 205, 200); */
-    background: linear-gradient(to right, #feac5e, #c779d0, #4bc0c8); 
+    background: linear-gradient(to right, #feac5e, #c779d0, #4bc0c8);
 }
 
-.today-bg span {
+.promo-banner span {
     margin-top: 0;
     font-size: 1rem;
     font-weight: 700;
@@ -16,10 +15,9 @@
     margin-left: 10px;
 }
 
-/* ------Moblie----- */
+/* ------Mobile----- */
 @media (max-width: 600px) {
-    .today-bg span {
+    .promo-banner span {
         font-size: 0.6rem;
     }
 }
-

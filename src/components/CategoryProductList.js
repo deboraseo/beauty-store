@@ -1,14 +1,15 @@
 import { useState, useEffect, useCallback } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import './BodyFace.css';
+import { useLocation } from 'react-router-dom';
+import './CategoryProductList.css';
 import api from '../configs/api';
+import ProductThumb from './ProductThumb';
 
 // Hook customizado para query params
 const useQuery = () => {
     return new URLSearchParams(useLocation().search);
 };
 
-const BodyFace = (props) => {
+const CategoryProductList = (props) => {
     const query = useQuery();
     const skin = query.get('name');
     const byBrand = query.get('brand');
@@ -64,25 +65,9 @@ const BodyFace = (props) => {
         applyFilters();
     }, [skin, byBrand, radio, products]);
 
-
-    const heart = '♥';
-    const emptyheart = '♡';
-
-    const rating = (number) => {
-        return heart.repeat(number).padEnd(5, emptyheart);
-    };
-
-    const formatPrice = (price) => {
-        return (price / 100).toLocaleString('pt-BR', {
-            style: 'currency',
-            currency: 'USD',
-            minimumFractionDigits: 2
-        });
-    };
-
     if (loading) {
         return (
-            <div className='b-page'>
+            <div className='category-page'>
                 <section className='products-part'>
                     <div className='loading-message'>
                         <p>Carregando produtos...</p>
@@ -94,7 +79,7 @@ const BodyFace = (props) => {
 
     if (error) {
         return (
-            <div className='b-page'>
+            <div className='category-page'>
                 <section className='products-part'>
                     <div className='error-message'>
                         <p>{error}</p>
@@ -106,7 +91,7 @@ const BodyFace = (props) => {
     }
 
     return (
-        <div className='b-page'>
+        <div className='category-page'>
             <section className='products-part'>
                 <div className='result'>
                     <p>({skinType.length}) {skinType.length === 1 ? 'Resultado' : 'Resultados'}</p>
@@ -120,23 +105,7 @@ const BodyFace = (props) => {
                     <div>
                         <ul className='products-list'>
                             {skinType.map(el => (
-                                <li key={el._id} className='prd-card'>
-                                    <Link to={`/product-detail/${el._id}`}>
-                                        <img
-                                            src={el.image_one}
-                                            alt={`${el.brand} - ${el.name}`}
-                                            loading="lazy"
-                                        />
-                                        <div>
-                                            <h6>{el.brand}</h6>
-                                            <p className='product-name'>{el.name}</p>
-                                            <p className='rating-hearts' aria-label={`Rating: ${el.rating} de 5 estrelas`}>
-                                                {rating(el.rating)}
-                                            </p>
-                                            <p className='product-price'>{formatPrice(el.price)}</p>
-                                        </div>
-                                    </Link>
-                                </li>
+                                <ProductThumb key={el._id} product={el} />
                             ))}
                         </ul>
                     </div>
@@ -146,4 +115,4 @@ const BodyFace = (props) => {
     );
 };
 
-export default BodyFace;
+export default CategoryProductList;

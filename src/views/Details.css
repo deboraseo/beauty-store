@@ -1,8 +1,25 @@
 .details {
     margin: 0 15vw;
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
     font-size: 1rem;
+}
+
+.details .spinner {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 600;
+    top: 90;
+    left: 0;
+    display: flex;
+    align-items: center;
+    background-color: white;
+}
+
+.details .spinner .loader {
+    margin-left: 50%;
+    margin-bottom: 10%;
 }
 
 .det-container .img-size {

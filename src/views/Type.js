@@ -1,8 +1,8 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { Spinner } from 'react-bootstrap';
 import api from '../configs/api';
+import ProductThumb from '../components/ProductThumb';
 import './ShowAll.css';
 
 
@@ -26,13 +26,6 @@ const Type = (props) => {
         };
     };
 
-    const heart = '♥';
-    const emptyheart = '♡'
-
-    const rating = (number) => {
-        return heart.repeat(number).padEnd(5, emptyheart);
-    }
-
     const filteredProducts = useCallback(() => {
         const filteredProduct = products.filter(el => el.category === type.slice(0, 4) && el.type === type.slice(5));
         setFiltered(filteredProduct);
@@ -53,20 +46,10 @@ const Type = (props) => {
                     </div>
 
                     <div>
-                        <ul className='the-ul'>
-                            {filtered.map(el => <>
-                            <li key={el._id} className='prd-card' id='showall-card'> 
-                                <Link to={`/product-detail/${el._id}`}>
-                                <img src={el.image_one} alt='body product'/>
-                                <div>
-                                    <p style={{fontWeight: 'bold'}}>{el.brand}</p>
-                                    <p className='the-p'>{el.name}</p>
-                                    <p>{rating(el.rating)}</p>
-                                    <p style={{fontWeight: 'bold'}}>{'$'+ (el.price / 100) + '.00'}</p>
-                                </div>
-                                </Link>
-                            </li></>)
-                            }
+                        <ul className='products-list'>
+                            {filtered.map(el => (
+                                <ProductThumb key={el._id} product={el} />
+                            ))}
                         </ul>
                     </div>
             </section>      

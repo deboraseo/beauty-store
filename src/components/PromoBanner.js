@@ -1,16 +1,16 @@
 import React from 'react';
-import './Today.css';
+import './PromoBanner.css';
 import { ImTruck } from 'react-icons/im';
 
-const Today = () => {
+const PromoBanner = () => {
     return (
         <div>
-            <div className= "today-bg">
+            <div className="promo-banner">
                 <span>Get up to 50% off on selected products. Plus, Free shipping!</span>
                 <span><ImTruck color='white' margin-top='5px' size='20'/></span>
             </div>
         </div>
-    )
+    );
 };
 
-export default Today;
+export default PromoBanner;

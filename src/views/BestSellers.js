@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
-import { Link } from 'react-router-dom';
 import { Spinner } from 'react-bootstrap';
 import api from '../configs/api';
+import ProductThumb from '../components/ProductThumb';
 import './ShowAll.css';
 
 const BestSellers = () => {
@@ -26,21 +26,6 @@ const BestSellers = () => {
     useEffect(() => {
         getAll();
     }, [getAll]);
-
-    const heart = '♥';
-    const emptyheart = '♡';
-
-    const rating = (number) => {
-        return heart.repeat(number).padEnd(5, emptyheart);
-    };
-
-    const formatPrice = (price) => {
-        return (price / 100).toLocaleString('pt-BR', {
-            style: 'currency',
-            currency: 'USD',
-            minimumFractionDigits: 2
-        });
-    };
 
     const filtered = products.filter(el => el.rating === 5);
 
@@ -83,23 +68,7 @@ const BestSellers = () => {
                     <div>
                         <ul className='products-list'>
                             {filtered.map(el => (
-                                <li key={el._id} className='prd-card' id='showall-card'>
-                                    <Link to={`/product-detail/${el._id}`}>
-                                        <img
-                                            src={el.image_one}
-                                            alt={`${el.brand} - ${el.name}`}
-                                            loading="lazy"
-                                        />
-                                        <div>
-                                            <h6>{el.brand}</h6>
-                                            <p className='product-name'>{el.name}</p>
-                                            <p className='rating-hearts' aria-label={`Rating: ${el.rating} de 5 estrelas`}>
-                                                {rating(el.rating)}
-                                            </p>
-                                            <p className='product-price'>{formatPrice(el.price)}</p>
-                                        </div>
-                                    </Link>
-                                </li>
+                                <ProductThumb key={el._id} product={el} />
                             ))}
                         </ul>
                     </div>

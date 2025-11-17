@@ -1,0 +1,142 @@
+/* Skeleton Card Base */
+.skeleton-card {
+    background: #fff;
+    pointer-events: none;
+}
+
+.skeleton-card .skeleton-content {
+    padding: 0 5px;
+}
+
+/* Skeleton Elements */
+.skeleton-image {
+    width: 100%;
+    height: 220px;
+    background: #e0e0e0;
+    border-radius: 4px;
+}
+
+.skeleton-brand {
+    width: 60%;
+    height: 14px;
+    background: #e0e0e0;
+    border-radius: 4px;
+    margin-top: 8px;
+    margin-bottom: 4px;
+}
+
+.skeleton-name {
+    width: 90%;
+    height: 12px;
+    background: #e0e0e0;
+    border-radius: 4px;
+    margin: 5px 0;
+}
+
+.skeleton-name-line2 {
+    width: 75%;
+    height: 12px;
+    background: #e0e0e0;
+    border-radius: 4px;
+    margin: 5px 0;
+}
+
+.skeleton-rating {
+    width: 50%;
+    height: 14px;
+    background: #e0e0e0;
+    border-radius: 4px;
+    margin: 6px 0;
+}
+
+.skeleton-price {
+    width: 40%;
+    height: 16px;
+    background: #e0e0e0;
+    border-radius: 4px;
+    margin-top: 6px;
+    margin-bottom: 5px;
+}
+
+/* Shimmer Animation */
+@keyframes shimmer {
+    0% {
+        background-position: -468px 0;
+    }
+    100% {
+        background-position: 468px 0;
+    }
+}
+
+.shimmer {
+    animation: shimmer 1.5s infinite;
+    background: linear-gradient(
+        to right,
+        #e0e0e0 0%,
+        #f0f0f0 20%,
+        #e0e0e0 40%,
+        #e0e0e0 100%
+    );
+    background-size: 800px 100%;
+}
+
+/* Carousel Skeleton Specific */
+.carousel-card.skeleton-card {
+    cursor: default;
+}
+
+.carousel-card.skeleton-card:hover {
+    transform: none;
+    box-shadow: 0 0 0.3em rgb(144, 150, 156);
+}
+
+.carousel-card .skeleton-image {
+    height: 220px;
+}
+
+/* Products List Skeleton Specific */
+.prd-card.skeleton-card .skeleton-image {
+    height: 220px;
+}
+
+/* Responsividade */
+
+/* Tablet */
+@media (max-width: 1024px) {
+    .prd-card.skeleton-card .skeleton-image {
+        height: 200px;
+    }
+
+    .carousel-card.skeleton-card .skeleton-image {
+        height: 200px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .prd-card.skeleton-card .skeleton-image {
+        height: 150px;
+    }
+
+    .carousel-card.skeleton-card .skeleton-image {
+        height: 180px;
+    }
+
+    .skeleton-brand {
+        height: 12px;
+        margin-top: 6px;
+    }
+
+    .skeleton-name,
+    .skeleton-name-line2 {
+        height: 10px;
+    }
+
+    .skeleton-rating {
+        height: 12px;
+    }
+
+    .skeleton-price {
+        height: 14px;
+    }
+}
