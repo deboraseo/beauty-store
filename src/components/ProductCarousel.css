@@ -1,16 +1,20 @@
 .carousel-card {
-  width: 220px;
-  height: 400px;
+  width: 220px !important;
+  min-width: 220px !important;
+  max-width: 220px !important;
+  height: 400px !important;
   margin-top: 5px;
   margin-left: 2px;
   margin-right: 10px;
   position: relative;
   box-shadow: 0 0 0.3em rgb(144, 150, 156);
-  padding: 12px;
-  list-style: none;
+  padding: 12px !important;
+  list-style: none !important;
+  list-style-type: none !important;
   border-radius: 8px;
   transition: all 0.3s ease;
-  flex-shrink: 0;
+  flex-shrink: 0 !important;
+  overflow: hidden;
 }
 
 .carousel-card:hover {
@@ -19,10 +23,11 @@
 }
 
 .carousel-card img {
-  width: 100%;
-  height: 220px;
-  object-fit: contain;
+  width: 100% !important;
+  height: 220px !important;
+  object-fit: contain !important;
   transition: transform 0.3s ease;
+  flex-shrink: 0;
 }
 
 .carousel-card:hover img {
@@ -39,8 +44,11 @@
   letter-spacing: 0.5px;
 }
 
-.carousel-card div {
+.carousel-card > a > div {
   padding: 0 5px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .carousel-card .product-name {
@@ -76,6 +84,11 @@
   align-items: baseline;
   padding: 0;
   margin: 0;
+  list-style: none;
+}
+
+.carousel-list li {
+  list-style: none;
 }
 
 .product-carousel h2 {
@@ -135,7 +148,7 @@
   background-color: rgb(240, 240, 240);
 }
 
-.carousel-list a {
+.carousel-card a {
   color: black;
   text-decoration: none;
   display: flex;
@@ -145,6 +158,11 @@
 
 .carousel-card a img {
   flex-shrink: 0;
+}
+
+.carousel-card div {
+  display: flex;
+  flex-direction: column;
 }
 
 /*----------- Tablet----------- */
@@ -160,14 +178,16 @@
   }
 
   .carousel-card {
-    width: 220px;
-    height: 400px;
+    width: 220px !important;
+    min-width: 220px !important;
+    max-width: 220px !important;
+    height: 400px !important;
   }
 
   .carousel-card img {
-    width: 100%;
-    height: 200px;
-    object-fit: contain;
+    width: 100% !important;
+    height: 200px !important;
+    object-fit: contain !important;
   }
 
   .carousel-buttons {
@@ -201,21 +221,23 @@
     }
 
     .carousel-card {
-      width: 170px;
-      height: 350px;
+      width: 170px !important;
+      min-width: 170px !important;
+      max-width: 170px !important;
+      height: 350px !important;
       margin: 0 5px;
       margin-top: 0;
       margin-left: 5px;
-      padding: 10px;
+      padding: 10px !important;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
       border-radius: 8px;
     }
 
     .carousel-card img {
-      width: 100%;
-      height: 180px;
+      width: 100% !important;
+      height: 180px !important;
       margin-top: 0;
-      object-fit: contain;
+      object-fit: contain !important;
     }
 
     .carousel-card h6 {
