@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import './ProductCarousel.css';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import ProductThumb from './ProductThumb';
-import SkeletonCard from './SkeletonCard';
+import CarouselSkeleton from './CarouselSkeleton';
 
 
 const ProductCarousel = (props) => {
@@ -24,22 +24,22 @@ const ProductCarousel = (props) => {
     return (
         <div className='product-carousel'>
             <h2>{props.title}</h2>
-            <div className='carousel-container' ref={carouselRef}>
-                <ul className='carousel-list'>
-                    {isLoading ? (
-                        <SkeletonCard count={5} cardClassName='carousel-card' />
-                    ) : (
-                        newData.map(el => (
-                            <ProductThumb key={el._id} product={el} cardClassName='carousel-card' />
-                        ))
-                    )}
-                </ul>
-            </div>
-            {!isLoading && (
-                <div className='carousel-buttons'>
-                    <button className='btn-left' onClick={handleLeftClick}><FiChevronLeft/></button>
-                    <button className='btn-right' onClick={handleRightClick}><FiChevronRight/></button>
-                </div>
+            {isLoading ? (
+                <CarouselSkeleton />
+            ) : (
+                <>
+                    <div className='carousel-container' ref={carouselRef}>
+                        <ul className='carousel-list'>
+                            {newData.map(el => (
+                                <ProductThumb key={el._id} product={el} cardClassName='carousel-card' />
+                            ))}
+                        </ul>
+                    </div>
+                    <div className='carousel-buttons'>
+                        <button className='btn-left' onClick={handleLeftClick}><FiChevronLeft/></button>
+                        <button className='btn-right' onClick={handleRightClick}><FiChevronRight/></button>
+                    </div>
+                </>
             )}
         </div>
     );

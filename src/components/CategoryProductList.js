@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useLocation } from 'react-router-dom';
+import { Spinner } from 'react-bootstrap';
 import './CategoryProductList.css';
 import api from '../configs/api';
 import ProductThumb from './ProductThumb';
@@ -67,12 +68,8 @@ const CategoryProductList = (props) => {
 
     if (loading) {
         return (
-            <div className='category-page'>
-                <section className='products-part'>
-                    <div className='loading-message'>
-                        <p>Carregando produtos...</p>
-                    </div>
-                </section>
+            <div className='spinner'>
+                <Spinner animation="border" role="status" className='loader' />
             </div>
         );
     }

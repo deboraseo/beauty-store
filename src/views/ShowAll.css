@@ -48,9 +48,6 @@
     width: 70%;
 }
 
-.prd-card .the-p {
-    font-weight: normal;
-}
 
 .result p {
     font-size: 1rem;
@@ -81,11 +78,6 @@
         width: 100vw;
     }
 
-    .prd-card {
-        height: 250px;
-        margin-right: 10px; 
-    }
-
     .showall h3 {
         font-size: 1.2rem;
         margin-top: 30px;
@@ -94,20 +86,5 @@
     .result p {
         font-size: 0.8rem;
         margin-left: -20px;
-    }
-
-    .prd-card .the-p {
-        font-size: 0.7rem;
-        text-align: center;
-        width: 100%;
-        height: 55px;
-    }
-
-    .prd-card div {
-        height: 110px;
-    }
-
-    .prd-card .rating-hearts {
-        display: none;
     }
 }

@@ -33,14 +33,16 @@
     height: 100%;
     padding-top: 5px;
     font-size: 1rem;
+    position: static;
 }
 
 .dropdown-content {
     display: flex;
     flex-direction: row;
-    position: absolute;
+    position: fixed;
     height: 450px;
-    margin-left: -25vw;
+    left: 50%;
+    transform: translateX(-50%);
     margin-top: 5px;
     width: 77vw;
     z-index: 200;
@@ -94,7 +96,6 @@
 
 #drop-face {
     width: 77vw;
-    margin-left: -550px;
 }
 
 /* -------Tablet Size------- */
@@ -115,7 +116,6 @@
 
     #drop-face {
         width: 90vw;
-        margin-left: -320px;
     }
 }
 

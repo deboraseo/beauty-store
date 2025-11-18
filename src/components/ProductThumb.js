@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { rating, formatPrice } from '../utils/productUtils';
+import './ProductThumb.css';
 
 const ProductThumb = ({ product, cardClassName = 'prd-card' }) => {
     return (

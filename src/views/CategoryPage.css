@@ -1,7 +1,7 @@
 .page-margin {
     display: flex;
+    gap: 60px;
     margin: 0 10vw;
     margin-bottom: 250px;
     font-size: 1rem;
 }
-

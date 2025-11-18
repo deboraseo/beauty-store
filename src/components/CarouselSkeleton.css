@@ -1,0 +1,58 @@
+.carousel-skeleton {
+    width: 100%;
+    height: 430px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 18px;
+    margin-bottom: 10px;
+}
+
+.carousel-skeleton-block {
+    width: 59vw;
+    height: 100%;
+    background: #e0e0e0;
+    border-radius: 8px;
+}
+
+/* Shimmer Animation */
+@keyframes shimmer {
+    0% {
+        background-position: -800px 0;
+    }
+    100% {
+        background-position: 800px 0;
+    }
+}
+
+.shimmer {
+    animation: shimmer 2s infinite;
+    background: linear-gradient(
+        to right,
+        #e0e0e0 0%,
+        #f0f0f0 20%,
+        #e0e0e0 40%,
+        #e0e0e0 100%
+    );
+    background-size: 800px 100%;
+}
+
+/* Tablet */
+@media (min-width: 600px) and (max-width: 999px) {
+    .carousel-skeleton-block {
+        width: 65vw;
+    }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .carousel-skeleton {
+        height: 400px;
+        margin-top: -20px;
+    }
+
+    .carousel-skeleton-block {
+        width: 65vw;
+        margin-left: 19%;
+    }
+}

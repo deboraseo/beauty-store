@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Header from './components/Header';
 import PromoBanner from './components/PromoBanner';
-import ScrollToTop from './components/ScrollToTop';
+import ScrollToTop from './utils/ScrollToTop';
 import Home from './views/Home';
 import Signup from './views/Signup';
 import Logout from './views/Logout';

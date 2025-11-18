@@ -35,9 +35,9 @@ const ProductFilters = ({ categoryTitle, categoryPath, products, onRatingChange,
 
                 {/* Filtro por tipo de pele */}
                 <li>
-                    <div className='list'>
-                        <Link to="#">By Skin Type</Link>
-                        <div className={button.btnOne ? 'menu-toggle active': 'menu-toggle'} onClick={() => handleButton('btnOne', button.btnOne)}>
+                    <div className='list' onClick={() => handleButton('btnOne', button.btnOne)}>
+                        <span className='filter-title'>By Skin Type</span>
+                        <div className={button.btnOne ? 'menu-toggle active': 'menu-toggle'}>
                             <span></span>
                             <span></span>
                         </div>
@@ -55,9 +55,9 @@ const ProductFilters = ({ categoryTitle, categoryPath, products, onRatingChange,
 
                 {/* Filtro por marca */}
                 <li>
-                    <div className='list'>
-                        <Link to="#">By Brand</Link>
-                        <div className={button.btnTwo ? 'menu-toggle active': 'menu-toggle'} onClick={() => handleButton('btnTwo', button.btnTwo)}>
+                    <div className='list' onClick={() => handleButton('btnTwo', button.btnTwo)}>
+                        <span className='filter-title'>By Brand</span>
+                        <div className={button.btnTwo ? 'menu-toggle active': 'menu-toggle'}>
                             <span></span>
                             <span></span>
                         </div>
@@ -76,9 +76,9 @@ const ProductFilters = ({ categoryTitle, categoryPath, products, onRatingChange,
 
                 {/* Filtro por rating */}
                 <li>
-                    <div className='list'>
-                        <Link to="#">By Rating</Link>
-                        <div className={button.btnThree ? 'menu-toggle active': 'menu-toggle'} onClick={() => handleButton('btnThree', button.btnThree)}>
+                    <div className='list' onClick={() => handleButton('btnThree', button.btnThree)}>
+                        <span className='filter-title'>By Rating</span>
+                        <div className={button.btnThree ? 'menu-toggle active': 'menu-toggle'}>
                             <span></span>
                             <span></span>
                         </div>

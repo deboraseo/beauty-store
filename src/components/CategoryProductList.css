@@ -1,3 +1,21 @@
+/* Spinner Loading */
+.spinner {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 600;
+    top: 90;
+    left: 0;
+    display: flex;
+    align-items: center;
+    background-color: white;
+}
+
+.spinner .loader {
+    margin-left: 50%;
+    margin-bottom: 10%;
+}
+
 /* ----Products section---- */
 .products-part {
     width: 100%;
@@ -9,7 +27,7 @@
 
 .products-part .result {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     width: 90%;
     margin: 50px 0 30px 70px;
@@ -25,7 +43,7 @@
 .products-list {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: flex-start;
     width: 100%;
     gap: 20px;
     padding: 0;
@@ -36,89 +54,7 @@
     list-style: none;
 }
 
-.products-list a {
-    color: #000;
-    text-decoration: none;
-    display: block;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.products-list a:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-/* Card de produto */
-.prd-card {
-    width: 200px;
-    height: 370px;
-    margin: 2px;
-    border-radius: 8px;
-    overflow: hidden;
-    transition: all 0.3s ease;
-}
-
-.prd-card:hover {
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
-}
-
-.prd-card h6 {
-    font-weight: bold;
-    margin-top: 10px;
-    margin-bottom: 5px;
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    color: #666;
-    letter-spacing: 0.5px;
-}
-
-.prd-card p {
-    font-size: 0.9rem;
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-.prd-card img {
-    width: 100%;
-    height: 220px;
-    object-fit: contain;
-    transition: transform 0.3s ease;
-}
-
-.prd-card:hover img {
-    transform: scale(1.05);
-}
-
-/* Informações do produto */
-.product-name {
-    font-weight: normal !important;
-    font-size: 0.9rem;
-    color: #333;
-    margin: 5px 0;
-    line-height: 1.4;
-    height: 2.8em;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-}
-
-.rating-hearts {
-    color: #ff6b6b;
-    font-size: 1rem;
-    letter-spacing: 2px;
-    margin: 8px 0;
-}
-
-.product-price {
-    font-size: 1.1rem !important;
-    color: #2d3436;
-    font-weight: 700 !important;
-    margin-top: 8px;
-}
-
-/* Estados de loading, erro e sem resultados */
-.loading-message,
+/* Estados de erro e sem resultados */
 .error-message,
 .no-results {
     display: flex;
@@ -129,12 +65,6 @@
     width: 100%;
     text-align: center;
     padding: 40px 20px;
-}
-
-.loading-message p {
-    font-size: 1.2rem;
-    color: #666;
-    font-weight: 500;
 }
 
 .error-message {
@@ -190,16 +120,6 @@
         gap: 15px;
         padding: 0 20px;
     }
-
-    .prd-card {
-        width: 180px;
-        height: 340px;
-    }
-
-    .prd-card img {
-        height: 200px;
-        object-fit: contain;
-    }
 }
 
 /* Mobile */
@@ -219,47 +139,13 @@
         justify-content: space-between;
     }
 
-    .prd-card {
-        width: 48%;
-        height: 280px;
-        margin: 0;
-        margin-bottom: 15px;
-    }
-
-    .prd-card img {
-        width: 100%;
-        height: 150px;
-        object-fit: contain;
-    }
-
-    .prd-card h6 {
-        font-size: 0.75rem;
-        margin-top: 8px;
-    }
-
-    .product-name {
-        font-size: 0.8rem;
-        height: 2.4em;
-    }
-
-    .rating-hearts {
-        font-size: 0.85rem;
-        letter-spacing: 1px;
-    }
-
-    .product-price {
-        font-size: 0.95rem !important;
-    }
-
     /* Estados mobile */
-    .loading-message,
     .error-message,
     .no-results {
         min-height: 300px;
         padding: 30px 15px;
     }
 
-    .loading-message p,
     .error-message p,
     .no-results p {
         font-size: 1rem;
@@ -268,25 +154,5 @@
     .error-message button {
         padding: 10px 24px;
         font-size: 0.9rem;
-    }
-}
-
-/* Mobile pequeno */
-@media (max-width: 375px) {
-    .prd-card {
-        width: 47%;
-        height: 260px;
-    }
-
-    .prd-card img {
-        height: 140px;
-    }
-
-    .product-name {
-        font-size: 0.75rem;
-    }
-
-    .rating-hearts {
-        font-size: 0.8rem;
     }
 }

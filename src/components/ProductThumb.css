@@ -1,0 +1,146 @@
+/* Base styles for product card */
+.prd-card {
+    width: 200px;
+    height: 370px;
+    margin: 2px;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    list-style: none;
+}
+
+.prd-card:hover {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+.prd-card a {
+    color: #000;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.prd-card h6 {
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    color: #666;
+    letter-spacing: 0.5px;
+}
+
+.prd-card p {
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.prd-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+}
+
+.prd-card:hover img {
+    transform: scale(1.05);
+}
+
+/* Product information */
+.prd-card .product-name {
+    font-weight: normal !important;
+    font-size: 0.9rem;
+    color: #333;
+    margin: 5px 0;
+    line-height: 1.4;
+    height: 2.8em;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.prd-card .rating-hearts {
+    color: #ff6b6b;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    margin: 8px 0;
+}
+
+.prd-card .product-price {
+    font-size: 1.1rem !important;
+    color: #2d3436;
+    font-weight: 700 !important;
+    margin-top: 8px;
+}
+
+/* Responsive */
+
+/* Tablet */
+@media (max-width: 1024px) {
+    .prd-card {
+        width: 180px;
+        height: 340px;
+    }
+
+    .prd-card img {
+        height: 200px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .prd-card {
+        width: 48%;
+        height: 280px;
+        margin: 0;
+        margin-bottom: 15px;
+    }
+
+    .prd-card img {
+        width: 100%;
+        height: 150px;
+    }
+
+    .prd-card h6 {
+        font-size: 0.75rem;
+        margin-top: 8px;
+    }
+
+    .prd-card .product-name {
+        font-size: 0.8rem;
+        height: 2.4em;
+    }
+
+    .prd-card .rating-hearts {
+        font-size: 0.85rem;
+        letter-spacing: 1px;
+    }
+
+    .prd-card .product-price {
+        font-size: 0.95rem !important;
+    }
+}
+
+/* Mobile small */
+@media (max-width: 375px) {
+    .prd-card {
+        width: 47%;
+        height: 260px;
+    }
+
+    .prd-card img {
+        height: 140px;
+    }
+
+    .prd-card .product-name {
+        font-size: 0.75rem;
+    }
+
+    .prd-card .rating-hearts {
+        font-size: 0.8rem;
+    }
+}
