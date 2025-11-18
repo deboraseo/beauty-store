@@ -10,7 +10,6 @@ const Navbar = () => {
     return (
         <div className='nav-container'>
             <div className='navbar'>
-                
                 <Link to='/store/best-sellers'>BEST SELLERS</Link>
                 <div className='dropdown'>
                     <Link to='/bodycare' onClick={()=>setToggleBody(!toggleBody)}>BODYCARE</Link>
