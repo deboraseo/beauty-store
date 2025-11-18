@@ -1,11 +1,12 @@
-.carousel-card {
+/* Force carousel card styles to override ProductThumb.css */
+.carousel-list .carousel-card,
+.product-carousel .carousel-card,
+li.carousel-card {
   width: 220px !important;
   min-width: 220px !important;
   max-width: 220px !important;
   height: 400px !important;
-  margin-top: 5px;
-  margin-left: 2px;
-  margin-right: 10px;
+  margin: 5px 10px 5px 2px !important;
   position: relative;
   box-shadow: 0 0 0.3em rgb(144, 150, 156);
   padding: 12px !important;
@@ -15,68 +16,86 @@
   transition: all 0.3s ease;
   flex-shrink: 0 !important;
   overflow: hidden;
+  display: block !important;
 }
 
-.carousel-card:hover {
+.carousel-list .carousel-card:hover,
+.product-carousel .carousel-card:hover,
+li.carousel-card:hover {
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
   transform: translateY(-5px);
 }
 
-.carousel-card img {
+.carousel-list .carousel-card img,
+.product-carousel .carousel-card img,
+li.carousel-card img {
   width: 100% !important;
   height: 220px !important;
   object-fit: contain !important;
   transition: transform 0.3s ease;
-  flex-shrink: 0;
+  flex-shrink: 0 !important;
+  display: block !important;
 }
 
-.carousel-card:hover img {
+.carousel-list .carousel-card:hover img,
+.product-carousel .carousel-card:hover img,
+li.carousel-card:hover img {
   transform: scale(1.05);
 }
 
-.carousel-card h6 {
-  font-weight: bold;
-  margin-top: 8px;
-  margin-bottom: 4px;
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  color: #666;
-  letter-spacing: 0.5px;
+.carousel-list .carousel-card h6,
+.product-carousel .carousel-card h6,
+li.carousel-card h6 {
+  font-weight: bold !important;
+  margin-top: 8px !important;
+  margin-bottom: 4px !important;
+  font-size: 0.8rem !important;
+  text-transform: uppercase !important;
+  color: #666 !important;
+  letter-spacing: 0.5px !important;
 }
 
-.carousel-card > a > div {
-  padding: 0 5px;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
+.carousel-list .carousel-card > a > div,
+.product-carousel .carousel-card > a > div,
+li.carousel-card > a > div {
+  padding: 0 5px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 !important;
 }
 
-.carousel-card .product-name {
+.carousel-list .carousel-card .product-name,
+.product-carousel .carousel-card .product-name,
+li.carousel-card .product-name {
   font-weight: normal !important;
-  font-size: 0.85rem;
-  color: #333;
-  margin: 5px 0;
-  line-height: 1.3;
-  height: 2.6em;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
+  font-size: 0.85rem !important;
+  color: #333 !important;
+  margin: 5px 0 !important;
+  line-height: 1.3 !important;
+  height: 2.6em !important;
+  overflow: hidden !important;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2 !important;
+  -webkit-box-orient: vertical !important;
 }
 
-.carousel-card .rating-hearts {
-  color: #ff6b6b;
-  font-size: 0.95rem;
-  letter-spacing: 2px;
-  margin: 6px 0;
+.carousel-list .carousel-card .rating-hearts,
+.product-carousel .carousel-card .rating-hearts,
+li.carousel-card .rating-hearts {
+  color: #ff6b6b !important;
+  font-size: 0.95rem !important;
+  letter-spacing: 2px !important;
+  margin: 6px 0 !important;
 }
 
-.carousel-card .product-price {
+.carousel-list .carousel-card .product-price,
+.product-carousel .carousel-card .product-price,
+li.carousel-card .product-price {
   font-size: 1rem !important;
-  color: #2d3436;
+  color: #2d3436 !important;
   font-weight: 700 !important;
-  margin-top: 6px;
-  margin-bottom: 5px;
+  margin-top: 6px !important;
+  margin-bottom: 5px !important;
 }
 
 .carousel-list {
