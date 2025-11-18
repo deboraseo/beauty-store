@@ -6,14 +6,14 @@
 .navbar {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-evenly !important;
     align-items: center;
     width: 100vw;
     height: 50px;
     padding: 8px 250px;
     margin-top: 20px;
     background-color: black;
-    position: relative;   
+    position: relative;
     font-size: 1rem;
 }
 
@@ -33,26 +33,23 @@
     height: 100%;
     padding-top: 5px;
     font-size: 1rem;
-    position: absolute;
+    position: relative;
 }
 
 .dropdown-content {
-    display: flex;
+    display: none;
     flex-direction: row;
     position: fixed;
+    top: 230px;
     height: 450px;
     left: 50%;
     transform: translateX(-50%);
-    margin-top: 5px;
     width: 77vw;
     z-index: 200;
     color: black;
     background-color: white;
     box-shadow: 0 0 0.3em rgb(144, 150, 156);
     padding: 50px 100px;
-    opacity: 0;
-    visibility: hidden;
-    transition: 260ms;
 }
 
 .links h6 {
@@ -90,8 +87,6 @@
 .dropdown:hover .dropdown-content{
     display: flex;
     justify-content: space-around;
-    opacity: 1;
-    visibility: visible;
 }
 
 #drop-face {
